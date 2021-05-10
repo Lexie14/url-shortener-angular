@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 16rem;
+  margin-top: 10rem;
+  font-size: 1.5rem;
+}
+
+.input-wrapper, .output-wrapper {
+  display: flex;
+  margin-top: 4rem;
+}
+
+.wrapper input, .wrapper button, .output-wrapper p {
+  font-size: 1.5rem;
+  padding: 10px;
+  border: 1px solid #e335e3;
+  border-radius: 4px;
+  color: #e335e3;
+}
+
+input {
+  margin-right: 2rem;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: #fce9fc;
+}
+
+.wrapper button:hover {
+  background-color: #e335e3;
+  color: white;
+}
+
+.output-wrapper p {
+  margin: 0 2rem 0 0;
+  border: none;
+}
+
+@media screen and (max-width: 576px) {
+  .input-wrapper, .output-wrapper {
+   flex-direction: column;
+  }
+   .input-wrapper input, .output-wrapper p {
+    margin: 0 0 1rem;
+   }
+}
