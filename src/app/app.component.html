@@ -1,10 +1,10 @@
 <div class="wrapper">
-    <div class="input-wrapper">
-        <input type="text">
-        <button class="input-button">Shorten URL</button>
-    </div>
-    <div class="output-wrapper">
-        <p>Some output</p>
-        <button class="copy-text">Copy URL</button>
-    </div>
+  <div class="input-wrapper">
+      <input type="text" #input>
+      <button class="input-button" (click)="handleClick(input.value)">Shorten URL</button>
+  </div>
+  <div class="output-wrapper">
+      <p>{{shortenedUrl}}</p>
+      <button class="copy-text">Copy URL</button>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UrlService } from './services/url-shortener.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public shortenedUrl: string;
 
+  constructor(private urlService: UrlService) {}
+
+  public handleClick(value: string) {
+    this.urlService
+      .shortenUrl(value)
+      .subscribe(response => (this.shortenedUrl = response.link));
+  }
 }
