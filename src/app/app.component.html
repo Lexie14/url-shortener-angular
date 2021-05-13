@@ -5,6 +5,7 @@
   </div>
   <div class="output-wrapper">
       <p>{{shortenedUrl}}</p>
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
       <button class="copy-text">Copy URL</button>
   </div>
 </div>

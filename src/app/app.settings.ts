@@ -5,7 +5,7 @@ export class AppSettings {
 
   public static HTTP_OPTIONS = {
     headers: new HttpHeaders({
-      Authorization: 'Bearer YOUR_BITLY_AUTH_TOKEN'
+      Authorization: 'Bearer YOUR_TOKEN'
     })
   };
 }

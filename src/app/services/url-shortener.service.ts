@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AppSettings } from '../app.settings';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,40 @@ export class UrlService {
   constructor(private http: HttpClient) {}
 
   public shortenUrl(url: string): Observable<string> {
-    return this.http.post<any>(
-      AppSettings.URL_ENDPOINT,
-      { long_url: url },
-      AppSettings.HTTP_OPTIONS
-    );
+    return this.http
+      .post<any>(
+        AppSettings.URL_ENDPOINT,
+        { long_url: url },
+        AppSettings.HTTP_OPTIONS
+      )
+      .pipe(
+        retry(1),
+        catchError(error => {
+          let errorMessage: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMessage = `Error: ${error.error.message}`;
+          } else {
+            errorMessage = this.getErrorMessage(error);
+          }
+          return throwError(errorMessage);
+        })
+      );
+  }
+
+  public getErrorMessage(error: HttpErrorResponse) {
+    switch (error.status) {
+      case 403: {
+        return `Access Denied: ${error.error.message}`;
+      }
+      case 404: {
+        return `Not Found: ${error.error.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${error.error.message}`;
+      }
+      default: {
+        return `Unknown Server Error: ${error.error.message}`;
+      }
+    }
   }
 }
