@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { UrlService } from './services/url-shortener.service';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,12 +15,9 @@ export class AppComponent {
   public handleClick(value: string) {
     this.urlService.shortenUrl(value).subscribe(
       response => {
-      console.log(response)
-        // @ts-ignore
         this.shortenedUrl = response.link;
       },
       error => {
-        console.log(error)
         this.errorMessage = error;
       }
     );
