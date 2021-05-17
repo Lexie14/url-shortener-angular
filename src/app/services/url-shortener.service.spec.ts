@@ -14,3 +14,8 @@ describe('UrlShortenerService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+// TODO
+// 1. Link validation
+// 2. UI
+// 3. Unit tests
