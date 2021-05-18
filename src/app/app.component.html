@@ -1,8 +1,7 @@
 <div class="wrapper">
   <div class="input-wrapper">
-      <input type="text" #input>
-      <button class="input-button" (click)="handleClick(input.value)">Shorten URL</button>
-  </div>
+    <input type="text" [formControl]="input" required pattern="^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$">
+    <button class="input-button" (click)="handleClick(input.value)" [disabled]="input.invalid">Shorten URL</button>  </div>
   <div class="output-wrapper">
       <p>{{shortenedUrl}}</p>
       <p *ngIf="errorMessage">{{errorMessage}}</p>

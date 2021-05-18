@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from './services/url-shortener.service';
-
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +9,7 @@ import { UrlService } from './services/url-shortener.service';
 export class AppComponent {
   public shortenedUrl: string;
   public errorMessage: string;
+  public input = new FormControl('');
 
   constructor(private urlService: UrlService) {}
 
