@@ -16,6 +16,5 @@ describe('UrlShortenerService', () => {
 });
 
 // TODO
-// 1. Link validation
-// 2. UI
+// 2. Toaster for Copied
 // 3. Unit tests
