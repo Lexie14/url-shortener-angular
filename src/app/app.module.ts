@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HttpErrorHandleInterceptor } from './services//http-error-interceptor.service';
 import { UrlShortenerAuthInterceptor } from './services/url-shortener-auth-interceptor.service';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,8 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandleInterceptor, multi: true},
