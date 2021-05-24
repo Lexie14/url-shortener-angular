@@ -1,4 +1,4 @@
-export interface urlShortenerResponse {
+export interface UrlShortenerResponse {
   archived: boolean;
   created_at: string;
   custom_bitlinks: Array<any>;
