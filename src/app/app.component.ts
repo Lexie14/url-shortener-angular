@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from './services/url-shortener.service';
+import { threadId } from 'worker_threads';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,15 +20,22 @@ export class AppComponent {
 
     if (validated) {
       this.wrongUrlFormat = false;
+      this.errorMessage = null;
       this.urlService.shortenUrl(url).subscribe(
         response => {
           this.shortenedUrl = response.link;
         },
         error => {
           this.errorMessage = error;
+          this.shortenedUrl = null;
+          this.wrongUrlFormat = false;
         }
       );
-    } else this.wrongUrlFormat = true;
+    } else {
+      this.wrongUrlFormat = true;
+      this.shortenedUrl = null;
+      this.errorMessage = null;
+    }
   }
 
   public handleCopyButtonClick() {
