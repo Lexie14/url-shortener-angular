@@ -5,7 +5,7 @@ import { of, throwError, Observable } from 'rxjs';
 import { UrlShortenerResponse } from './interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
   let urlShortenerServiceSpy: jasmine.SpyObj<UrlShortenerService>;
